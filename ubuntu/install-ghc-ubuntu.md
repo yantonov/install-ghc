@@ -1,5 +1,9 @@
 ### How to install latest GHC 7.10.1 + cabal 1.22.3.0 from source on ubuntu
 
+for your convinience these instuction is available as:  
+[gist](https://gist.github.com/yantonov/10083524)  
+[git repo](https://github.com/yantonov/install-ghc)  
+
 ### ghc
 
 ubuntu prerequisites

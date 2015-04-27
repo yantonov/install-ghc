@@ -1,5 +1,10 @@
 ### how to install haskell GHC 7.8.3 + cabal 1.22 on mac os 
 
+for your convinience these instuction is available as:  
+[gist](https://gist.github.com/yantonov/23b15966eb46c45b73e0)
+[git repo](https://github.com/yantonov/install-ghc)  
+
+
     # install xcode command line tools from here:  
     # [xcode command line tools site](https://developer.apple.com/downloads)
 
