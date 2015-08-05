@@ -26,6 +26,9 @@ for your convinience these instuction is available as:
 
     # make and install  
     make install
+    # for xcode4:
+    # see [explanation](http://haskell.1045720.n5.nabble.com/Installing-ghc-7-8-3-OS-X-bindist-fails-on-Xcode-4-CLI-only-machine-td5752678.html)
+    # make install CC_CLANG_BACKEND=0
 
     # symbol links  
     cd $HOME/Development/bin
