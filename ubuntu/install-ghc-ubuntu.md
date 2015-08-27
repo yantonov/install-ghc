@@ -2,7 +2,21 @@
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/10083524)  
-[git repo](https://github.com/yantonov/install-ghc)  
+[git repo](https://github.com/yantonov/install-ghc)
+
+### settings
+
+    GHC_VERSION="7.10.1"  
+    ARCHITECTURE="x86_64"  
+    # for 32 bit ARCHITECTURE="i386"      
+    PLATFORM="unknown-linux"  
+    GHC_DIST_FILENAME="ghc-$GHC_VERSION-$ARCHITECTURE-$PLATFORM-deb7.tar.bz2"
+    
+    CABAL_VERSION="1.22.3.0"
+    CABAL_DIST_FILENAME="Cabal-$CABAL_VERSION.tar.gz"
+
+    CABAL_INSTALL_VERSION="1.22.3.0"
+    CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
 
 ### ghc
 
@@ -15,27 +29,23 @@ ubuntu prerequisites
 ghc installation
 
     # get distr  
-    cd $HOME/Downloads  
-    # 64 bit
-    wget https://www.haskell.org/ghc/dist/7.10.1/ghc-7.10.1-x86_64-unknown-linux-deb7.tar.bz2   
-    tar xvfj ghc-7.10.1-x86_64-unknown-linux-deb7.tar.bz2  
-    # 32 bit
-    # wget https://www.haskell.org/ghc/dist/7.10.1/ghc-7.10.1-i386-unknown-linux-deb7.tar.bz2
-    # tar xvfj ghc-7.10.1-i386-unknown-linux-deb7.tar.bz2  
-    cd ghc-7.10.1  
+    cd $HOME/Downloads
+    wget "https://www.haskell.org/ghc/dist/$GHC_VERSION/$GHC_DIST_FILENAME"  
+    tar xvfj $GHC_DIST_FILENAME  
+    cd ghc-$GHC_VERSION  
 
     # install to  
-    mkdir $HOME/Development/bin/ghc-7.10.1  
+    mkdir $HOME/Development/bin/ghc-$GHC_VERSION  
     # or choose another path
     
-    ./configure --prefix=$HOME/Development/bin/ghc-7.10.1  
+    ./configure --prefix=$HOME/Development/bin/ghc-$GHC_VERSION  
     
     make install
 
     # symbol links  
     cd $HOME/Development/bin
     rm -f ghc
-    ln -s `pwd`/ghc-7.10.1 ghc  
+    ln -s `pwd`/ghc-$GHC_VERSION ghc  
     
     # add $HOME/Development/bin/ghc to $PATH  
     # add this line to ~/.profile  
@@ -47,7 +57,7 @@ ghc installation
     
     # remove temporary files  
     cd $HOME/Downloads  
-    rm -rfv ghc-7.10.1*
+    rm -rfv ghc-$GHC_VERSION*
 
 ### cabal (package manager for haskell)
 
@@ -59,11 +69,11 @@ ghc installation
 
     # clone dist  
     cd $HOME/Downloads  
-    curl -O https://www.haskell.org/cabal/release/cabal-1.22.3.0/Cabal-1.22.3.0.tar.gz
+    curl -O "https://www.haskell.org/cabal/release/cabal-$CABAL_VERSION/$CABAL_DIST_FILENAME"  
     
     # extract   
-    tar xzvf Cabal-1.22.3.0.tar.gz  
-    cd Cabal-1.22.3.0  
+    tar xzvf $CABAL_DIST_FILENAME  
+    cd Cabal-$CABAL_VERSION  
     
     # build
     ghc --make Setup.hs
@@ -73,24 +83,24 @@ ghc installation
     
     # Remove temporary files
     cd $HOME/Downloads
-    rm -rfv Cabal-1.22.3.0*
+    rm -rfv Cabal-$CABAL_VERSION*
 
 #### cabal-install
 
     # get distributive  
     cd $HOME/Downloads  
-    curl -O https://www.haskell.org/cabal/release/cabal-install-1.22.3.0/cabal-install-1.22.3.0.tar.gz
+    curl -O "https://www.haskell.org/cabal/release/cabal-install-$CABAL_INSTALL_VERSION/$CABAL_INSTALL_DIST_FILENAME"  
     
     # extract archive  
-    tar xzvf cabal-install-1.22.3.0.tar.gz  
-    cd cabal-install-1.22.3.0  
+    tar xzvf $CABAL_INSTALL_DIST_FILENAME  
+    cd cabal-install-$CABAL_INSTALL_VERSION  
     
     # install  
     ./bootstrap.sh
     
     # remove temporary files  
     cd $HOME/Downloads  
-    rm -rfv cabal-install-1.22.3.0*  
+    rm -rfv cabal-install-$CABAL_INSTALL_VERSION*  
     
     # add path to cabal to PATH environment
     export CABAL_HOME=$HOME/.cabal
