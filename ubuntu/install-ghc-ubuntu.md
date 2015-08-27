@@ -1,4 +1,4 @@
-### How to install latest GHC 7.10.1 + cabal 1.22.3.0 from source on ubuntu
+### How to install latest GHC 7.10.2 + cabal 1.22.4.0 + cabal-install 1.22.6.0 from source on ubuntu
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/10083524)  
@@ -6,16 +6,16 @@ for your convinience these instuction is available as:
 
 ### settings
 
-    GHC_VERSION="7.10.1"  
+    GHC_VERSION="7.10.2"  
     ARCHITECTURE="x86_64"  
     # for 32 bit ARCHITECTURE="i386"      
     PLATFORM="unknown-linux"  
     GHC_DIST_FILENAME="ghc-$GHC_VERSION-$ARCHITECTURE-$PLATFORM-deb7.tar.bz2"
     
-    CABAL_VERSION="1.22.3.0"
+    CABAL_VERSION="1.22.4.0"
     CABAL_DIST_FILENAME="Cabal-$CABAL_VERSION.tar.gz"
 
-    CABAL_INSTALL_VERSION="1.22.3.0"
+    CABAL_INSTALL_VERSION="1.22.6.0"
     CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
 
 ### ghc
