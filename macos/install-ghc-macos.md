@@ -1,9 +1,23 @@
-### how to install haskell GHC 7.10.1 + cabal 1.22.3.0 on mac os 
+### How to install latest GHC 7.10.2 + cabal 1.22.4.0 + cabal-install 1.22.6.0 from source on mac os
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/23b15966eb46c45b73e0)  
 [git repo](https://github.com/yantonov/install-ghc)  
 
+### settings
+
+    GHC_VERSION="7.10.2"  
+    ARCHITECTURE="x86_64"  
+    PLATFORM="apple-darwin"  
+    GHC_DIST_FILENAME="ghc-$GHC_VERSION-$ARCHITECTURE-$PLATFORM.tar.bz2"  
+    
+    CABAL_VERSION="1.22.4.0"  
+    CABAL_DIST_FILENAME="Cabal-$CABAL_VERSION.tar.gz"  
+
+    CABAL_INSTALL_VERSION="1.22.6.0"  
+    CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"  
+
+### ghc
 
     # install xcode command line tools from here:  
     # [xcode command line tools site](https://developer.apple.com/downloads)
@@ -12,17 +26,17 @@ for your convinience these instuction is available as:
     cd ~/Downloads
 
     # get ghc sources  
-    curl -O https://downloads.haskell.org/~ghc/7.10.1/ghc-7.10.1-x86_64-apple-darwin.tar.bz2
+    curl -O "https://downloads.haskell.org/~ghc/$GHC_VERSION/$GHC_DIST_FILENAME"
 
     # extract files
-    tar xvfj ghc-7.10.1-x86_64-apple-darwin.tar.bz2
+    tar xvfj $GHC_DIST_FILENAME
 
     # goto extracted dir
-    cd ghc-7.10.1
+    cd ghc-$GHC_VERSION
 
     # configure  
-    mkdir -p $HOME/Development/bin/ghc-7.10.1  
-    ./configure --prefix=$HOME/Development/bin/ghc-7.10.1
+    mkdir -p $HOME/Development/bin/ghc-$GHC_VERSION  
+    ./configure --prefix=$HOME/Development/bin/ghc-$GHC_VERSION
 
     # make and install  
     make install
@@ -33,7 +47,7 @@ for your convinience these instuction is available as:
     # symbol links  
     cd $HOME/Development/bin
     rm -fv ghc
-    ln -s `pwd`/ghc-7.10.1/ ghc
+    ln -s `pwd`/ghc-$GHC_VERSION/ ghc
 
     # add $HOME/Development/bin/ghc to $PATH
     GHC_HOME=$HOME/Development/bin/ghc
@@ -41,7 +55,7 @@ for your convinience these instuction is available as:
 
     # remove temporary files  
     cd $HOME/Downloads  
-    rm -rfv ghc-7.10.1*
+    rm -rfv ghc-$GHC_VERSION*
 
 ### cabal (package manager for haskell)
 
@@ -53,11 +67,11 @@ for your convinience these instuction is available as:
 
     # clone dist  
     cd $HOME/Downloads  
-    curl -O https://www.haskell.org/cabal/release/cabal-1.22.3.0/Cabal-1.22.3.0.tar.gz
+    curl -O "https://www.haskell.org/cabal/release/cabal-$CABAL_VERSION/$CABAL_DIST_FILENAME"  
     
     # extract   
-    tar xzvf Cabal-1.22.3.0.tar.gz  
-    cd Cabal-1.22.3.0  
+    tar xzvf $CABAL_DIST_FILENAME  
+    cd Cabal-$CABAL_VERSION  
     
     # build
     ghc --make Setup.hs
@@ -67,25 +81,25 @@ for your convinience these instuction is available as:
     
     # Remove temporary files
     cd $HOME/Downloads
-    rm -rfv Cabal-1.22.3.0*
+    rm -rfv Cabal-$CABAL_VERSION*
 
 
-#### cabal-install    
+#### cabal-install
 
     # get distributive  
     cd $HOME/Downloads  
-    curl -O https://www.haskell.org/cabal/release/cabal-install-1.22.3.0/cabal-install-1.22.3.0.tar.gz  
+    curl -O "https://www.haskell.org/cabal/release/cabal-install-$CABAL_INSTALL_VERSION/$CABAL_INSTALL_DIST_FILENAME"  
     
     # extract archive  
-    tar xzvf cabal-install-1.22.3.0.tar.gz  
-    cd cabal-install-1.22.3.0  
+    tar xzvf $CABAL_INSTALL_DIST_FILENAME  
+    cd cabal-install-$CABAL_INSTALL_VERSION  
     
     # install  
     ./bootstrap.sh
     
     # remove temporary files  
     cd $HOME/Downloads  
-    rm -rfv cabal-install-1.22.3.0*  
+    rm -rfv cabal-install-$CABAL_INSTALL_VERSION*  
     
     # add path to cabal to PATH environment
     CABAL_HOME=$HOME/.cabal
