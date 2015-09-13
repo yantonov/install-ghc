@@ -1,1 +1,1 @@
-How to install haskell ghc, cabal from source.
+How to install haskell ghc form source, cabal, stack.
