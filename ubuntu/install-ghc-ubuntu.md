@@ -18,6 +18,11 @@ for your convinience these instuction is available as:
     CABAL_INSTALL_VERSION="1.22.6.0"
     CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
 
+    STACK_VERSION="0.1.4.0"  
+    STACK_ARCHITECTURE="x86_64"  
+    STACK_PLATFORM="linux"  
+    STACK_DIST_FILENAME="stack-$STACK_VERSION-$STACK_ARCHITECTURE-$STACK_PLATFORM.tar.gz"  
+
 ### ghc
 
 ubuntu prerequisites
@@ -105,3 +110,22 @@ ghc installation
     # add path to cabal to PATH environment
     export CABAL_HOME=$HOME/.cabal
     export PATH=$CABAL_HOME/bin:$PATH
+
+### stack (new package manager and build tool)
+
+    cd $HOME/Downloads  
+    curl -L -O "https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/$STACK_DIST_FILENAME"  
+    tar xvfz $STACK_DIST_FILENAME
+    
+    # move to home development dir  
+    mkdir -p $HOME/Development/bin/stack-$STACK_VERSION/bin
+    mv stack $HOME/Development/bin/stack-$STACK_VERSION/bin
+    rm $STACK_DIST_FILENAME  
+    cd $HOME/Development/bin  
+    
+    # sym link  
+    ln -s `pwd`/stack-$STACK_VERSION stack  
+
+    # add to PATH environment  
+    STACK_HOME=$HOME/Development/bin/stack  
+    PATH=$STACK_HOME/bin:$PATH  
