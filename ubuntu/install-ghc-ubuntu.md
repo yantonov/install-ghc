@@ -1,4 +1,4 @@
-### How to install latest GHC 7.10.2 + cabal 1.22.4.0 + cabal-install 1.22.6.0 from source on ubuntu
+### How to install latest GHC 7.10.2 from source + cabal 1.22.4.0 + cabal-install 1.22.6.0 + stack on ubuntu
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/10083524)  
