@@ -1,4 +1,4 @@
-### How to install latest GHC 7.10.2 from source + cabal 1.22.4.0 + cabal-install 1.22.6.0 + stack on ubuntu
+### How to install latest GHC 7.10.2 from source + cabal 1.22.4.0 + cabal-install 1.22.6.0 + stack 0.1.5.0 on ubuntu
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/10083524)  
@@ -18,7 +18,7 @@ for your convinience these instuction is available as:
     CABAL_INSTALL_VERSION="1.22.6.0"
     CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
 
-    STACK_VERSION="0.1.4.0"  
+    STACK_VERSION="0.1.5.0"  
     STACK_ARCHITECTURE="x86_64"  
     STACK_PLATFORM="linux"  
     STACK_DIST_FILENAME="stack-$STACK_VERSION-$STACK_ARCHITECTURE-$STACK_PLATFORM.tar.gz"  
