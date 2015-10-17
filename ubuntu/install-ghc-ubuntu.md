@@ -1,4 +1,4 @@
-### How to install latest GHC 7.10.2 from source + cabal 1.22.4.0 + cabal-install 1.22.6.0 + stack 0.1.5.0 on ubuntu
+### How to install latest GHC 7.10.2 from source  + stack 0.1.5.0 + cabal 1.22.4.0 + cabal-install 1.22.6.0 on ubuntu
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/10083524)  
@@ -25,13 +25,13 @@ for your convinience these instuction is available as:
 
 ### ghc
 
-ubuntu prerequisites
+### ubuntu prerequisites
 
     # Multiprecision arithmetic library developers tools, zlib  
     sudo apt-get install libgmp-dev zlib1g-dev -y  
     sudo -K
 
-ghc installation
+### ghc installation
 
     # get distr  
     cd $HOME/Downloads
@@ -63,6 +63,26 @@ ghc installation
     # remove temporary files  
     cd $HOME/Downloads  
     rm -rfv ghc-$GHC_VERSION*
+
+### stack (new package manager and build tool, preferrered way to dependency management)
+
+    cd $HOME/Downloads  
+    curl -L -O "https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/$STACK_DIST_FILENAME"  
+    tar xvfz $STACK_DIST_FILENAME
+    
+    # move to home development dir  
+    mkdir -p $HOME/Development/bin/stack-$STACK_VERSION/bin
+    mv stack $HOME/Development/bin/stack-$STACK_VERSION/bin
+    rm $STACK_DIST_FILENAME  
+    cd $HOME/Development/bin  
+    
+    # sym link  
+    ln -s `pwd`/stack-$STACK_VERSION stack  
+
+    # add to PATH environment  
+    STACK_HOME=$HOME/Development/bin/stack  
+    PATH=$STACK_HOME/bin:$PATH  
+
 
 ### cabal (package manager for haskell)
 
@@ -111,21 +131,3 @@ ghc installation
     export CABAL_HOME=$HOME/.cabal
     export PATH=$CABAL_HOME/bin:$PATH
 
-### stack (new package manager and build tool)
-
-    cd $HOME/Downloads  
-    curl -L -O "https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/$STACK_DIST_FILENAME"  
-    tar xvfz $STACK_DIST_FILENAME
-    
-    # move to home development dir  
-    mkdir -p $HOME/Development/bin/stack-$STACK_VERSION/bin
-    mv stack $HOME/Development/bin/stack-$STACK_VERSION/bin
-    rm $STACK_DIST_FILENAME  
-    cd $HOME/Development/bin  
-    
-    # sym link  
-    ln -s `pwd`/stack-$STACK_VERSION stack  
-
-    # add to PATH environment  
-    STACK_HOME=$HOME/Development/bin/stack  
-    PATH=$STACK_HOME/bin:$PATH  
