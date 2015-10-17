@@ -1,4 +1,4 @@
-### How to install latest GHC 7.10.2 from source + cabal 1.22.4.0 + cabal-install 1.22.6.0 + stack 0.1.5.0 on mac os
+### How to install latest GHC 7.10.2 from source + stack 0.1.5.0 + cabal 1.22.4.0 + cabal-install 1.22.6.0 on mac os
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/23b15966eb46c45b73e0)  
@@ -62,6 +62,26 @@ for your convinience these instuction is available as:
     cd $HOME/Downloads  
     rm -rfv ghc-$GHC_VERSION*
 
+### stack (new package manager and build tool, preferrered way to manage dependencies)
+
+    cd $HOME/Downloads  
+    curl -L -O "https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/$STACK_DIST_FILENAME"  
+    tar xvfz $STACK_DIST_FILENAME
+    
+    # move to home development dir  
+    mkdir -p $HOME/Development/bin/stack-$STACK_VERSION/bin
+    mv stack $HOME/Development/bin/stack-$STACK_VERSION/bin
+    rm $STACK_DIST_FILENAME  
+    cd $HOME/Development/bin  
+    
+    # sym link  
+    ln -s `pwd`/stack-$STACK_VERSION stack  
+
+    # add to PATH environment  
+    STACK_HOME=$HOME/Development/bin/stack  
+    PATH=$STACK_HOME/bin:$PATH  
+
+
 ### cabal (package manager for haskell)
 
     # remove old  
@@ -109,22 +129,4 @@ for your convinience these instuction is available as:
     # add path to cabal to PATH environment
     CABAL_HOME=$HOME/.cabal
     PATH=$CABAL_HOME/bin:$PATH
-
-### stack (new package manager and build tool)
-
-    cd $HOME/Downloads  
-    curl -L -O "https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/$STACK_DIST_FILENAME"  
-    tar xvfz $STACK_DIST_FILENAME
     
-    # move to home development dir  
-    mkdir -p $HOME/Development/bin/stack-$STACK_VERSION/bin
-    mv stack $HOME/Development/bin/stack-$STACK_VERSION/bin
-    rm $STACK_DIST_FILENAME  
-    cd $HOME/Development/bin  
-    
-    # sym link  
-    ln -s `pwd`/stack-$STACK_VERSION stack  
-
-    # add to PATH environment  
-    STACK_HOME=$HOME/Development/bin/stack  
-    PATH=$STACK_HOME/bin:$PATH  
