@@ -62,7 +62,7 @@ for your convinience these instuction is available as:
     cd $HOME/Downloads  
     rm -rfv ghc-$GHC_VERSION*
 
-### stack (new package manager and build tool, preferrered way to manage dependencies)
+### stack (package manager and build tool, preferrered way to manage dependencies)
 
     cd $HOME/Downloads  
     curl -L -O "https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/$STACK_DIST_FILENAME"  
@@ -82,7 +82,7 @@ for your convinience these instuction is available as:
     PATH=$STACK_HOME/bin:$PATH  
 
 
-### cabal (package manager for haskell)
+### cabal (package manager, old way to manage dependencies)
 
     # remove old  
     rm -rf $HOME/.cabal
