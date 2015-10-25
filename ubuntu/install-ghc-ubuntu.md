@@ -18,10 +18,10 @@ for your convinience these instuction is available as:
     CABAL_INSTALL_VERSION="1.22.6.0"
     CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
 
-    STACK_VERSION="0.1.5.0"  
+    STACK_VERSION="0.1.6.0"  
     STACK_ARCHITECTURE="x86_64"  
     STACK_PLATFORM="linux"  
-    STACK_DIST_FILENAME="stack-$STACK_VERSION-$STACK_ARCHITECTURE-$STACK_PLATFORM.tar.gz"  
+    STACK_DIST_FILENAME="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE.tar.gz"  
 
 ### ghc
 
@@ -66,8 +66,9 @@ for your convinience these instuction is available as:
 
 ### stack (package manager and build tool, preferrered way to manage dependencies)
 
-    cd $HOME/Downloads  
-    curl -L -O "https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/$STACK_DIST_FILENAME"  
+    cd $HOME/Downloads
+    STACK_DIST_URL="https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/$STACK_DIST_FILENAME"
+    curl -L -O $STACK_DIST_URL  
     tar xvfz $STACK_DIST_FILENAME
     
     # move to home development dir  
@@ -76,13 +77,17 @@ for your convinience these instuction is available as:
     rm $STACK_DIST_FILENAME  
     cd $HOME/Development/bin  
     
-    # sym link  
+    # sym link
+    rm -ri stack  
     ln -s `pwd`/stack-$STACK_VERSION stack  
 
     # add to PATH environment  
     STACK_HOME=$HOME/Development/bin/stack  
-    PATH=$STACK_HOME/bin:$PATH  
+    PATH=$STACK_HOME/bin:$PATH
 
+    # clean up
+    cd $HOME/Downloads
+    rm -rf stack-$STACK_VERSION*
 
 ### cabal (package manager, old way to manage dependencies)
 
