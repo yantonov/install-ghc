@@ -1,4 +1,4 @@
-### How to install latest GHC 7.10.2 from source + stack 0.1.6.0 + cabal 1.22.4.0 + cabal-install 1.22.6.0 on mac os
+### How to install latest GHC 7.10.3 from source + stack 0.1.10.0 + cabal 1.22.4.0 + cabal-install 1.22.6.0 on mac os
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/23b15966eb46c45b73e0)  
@@ -6,7 +6,7 @@ for your convinience these instuction is available as:
 
 ### settings
 
-    GHC_VERSION="7.10.2"  
+    GHC_VERSION="7.10.3"  
     ARCHITECTURE="x86_64"  
     PLATFORM="apple-darwin"  
     GHC_DIST_FILENAME="ghc-$GHC_VERSION-$ARCHITECTURE-$PLATFORM.tar.bz2"  
@@ -17,7 +17,7 @@ for your convinience these instuction is available as:
     CABAL_INSTALL_VERSION="1.22.6.0"  
     CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
 
-    STACK_VERSION="0.1.6.0"  
+    STACK_VERSION="0.1.10.0"  
     STACK_ARCHITECTURE="x86_64"  
     STACK_PLATFORM="osx"  
     STACK_DIST_FILENAME="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE.tar.gz"  
@@ -28,11 +28,12 @@ for your convinience these instuction is available as:
     # install xcode command line tools from here:  
     # [xcode command line tools site](https://developer.apple.com/downloads)
 
-    # go to Downloads
+    # go to Downloads  
     cd ~/Downloads
 
     # get ghc sources  
-    curl -O "https://downloads.haskell.org/~ghc/$GHC_VERSION/$GHC_DIST_FILENAME"
+    DIST_FILE="https://downloads.haskell.org/~ghc/$GHC_VERSION/$GHC_DIST_FILENAME"
+    curl -O $DIST_FILE
 
     # extract files
     tar xvfj $GHC_DIST_FILENAME
