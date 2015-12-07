@@ -1,4 +1,4 @@
-### How to install latest GHC 7.10.2 from source  + stack 0.1.6.0 + cabal 1.22.4.0 + cabal-install 1.22.6.0 on ubuntu
+### How to install latest GHC 7.10.3 from source  + stack 0.1.10.0 + cabal 1.22.4.0 + cabal-install 1.22.6.0 on ubuntu
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/10083524)  
@@ -6,11 +6,11 @@ for your convinience these instuction is available as:
 
 ### settings
 
-    GHC_VERSION="7.10.2"  
+    GHC_VERSION="7.10.3"  
     ARCHITECTURE="x86_64"  
     # for 32 bit ARCHITECTURE="i386"      
     PLATFORM="unknown-linux"  
-    GHC_DIST_FILENAME="ghc-$GHC_VERSION-$ARCHITECTURE-$PLATFORM-deb7.tar.bz2"
+    GHC_DIST_FILENAME="ghc-$GHC_VERSION-$ARCHITECTURE-$PLATFORM.tar.bz2"
     
     CABAL_VERSION="1.22.4.0"
     CABAL_DIST_FILENAME="Cabal-$CABAL_VERSION.tar.gz"
@@ -18,7 +18,7 @@ for your convinience these instuction is available as:
     CABAL_INSTALL_VERSION="1.22.6.0"
     CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
 
-    STACK_VERSION="0.1.6.0"  
+    STACK_VERSION="0.1.10.0"  
     STACK_ARCHITECTURE="x86_64"  
     STACK_PLATFORM="linux"  
     STACK_DIST_FILENAME="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE.tar.gz"  
@@ -35,7 +35,8 @@ for your convinience these instuction is available as:
 
     # get distr  
     cd $HOME/Downloads
-    wget "https://www.haskell.org/ghc/dist/$GHC_VERSION/$GHC_DIST_FILENAME"  
+    GHC_DIST_URL="https://www.haskell.org/ghc/dist/$GHC_VERSION/$GHC_DIST_FILENAME"
+    curl -L -O $GHC_DIST_URL  
     tar xvfj $GHC_DIST_FILENAME  
     cd ghc-$GHC_VERSION  
 
