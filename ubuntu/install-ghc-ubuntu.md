@@ -1,10 +1,12 @@
-### How to install latest GHC 7.10.3 from source  + stack 0.1.10.0 + cabal 1.22.4.0 + cabal-install 1.22.6.0 on ubuntu
+### How to install latest GHC 7.10.3 from source  + stack 1.0.0 + cabal 1.22.4.0 + cabal-install 1.22.6.0 on ubuntu
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/10083524)  
 [git repo](https://github.com/yantonov/install-ghc)
 
 ### settings
+    
+    DOWNLOADS_DIR="$HOME/Downloads"
 
     GHC_VERSION="7.10.3"  
     ARCHITECTURE="x86_64"  
@@ -18,10 +20,14 @@ for your convinience these instuction is available as:
     CABAL_INSTALL_VERSION="1.22.6.0"
     CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
 
-    STACK_VERSION="0.1.10.0"  
+    STACK_VERSION="1.0.0"  
     STACK_ARCHITECTURE="x86_64"  
     STACK_PLATFORM="linux"  
     STACK_DIST_FILENAME="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE.tar.gz"  
+    STACK_DIST_URL="https://www.stackage.org/stack/linux-x86_64"  
+    STACK_DIST_UNZIPPED_DIR="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE"
+    STACK_INSTALL_DIR="$HOME/Development/bin"  
+    STACK_TARGET_DIR="stack-$STACK_VERSION"  
 
 ### ghc
 
@@ -34,7 +40,7 @@ for your convinience these instuction is available as:
 ### ghc installation
 
     # get distr  
-    cd $HOME/Downloads
+    cd $DOWNLOADS_DIR
     GHC_DIST_URL="https://www.haskell.org/ghc/dist/$GHC_VERSION/$GHC_DIST_FILENAME"
     curl -L -O $GHC_DIST_URL  
     tar xvfj $GHC_DIST_FILENAME  
@@ -62,32 +68,32 @@ for your convinience these instuction is available as:
     source ~/.profile
     
     # remove temporary files  
-    cd $HOME/Downloads  
+    cd $DOWNLOADS_DIR  
     rm -rfv ghc-$GHC_VERSION*
 
 ### stack (package manager and build tool, preferrered way to manage dependencies)
 
-    cd $HOME/Downloads
-    STACK_DIST_URL="https://github.com/commercialhaskell/stack/releases/download/v$STACK_VERSION/$STACK_DIST_FILENAME"
-    curl -L -O $STACK_DIST_URL  
+    cd $DOWNLOADS_DIR
+    
+    curl -L -o $STACK_DIST_FILENAME $STACK_DIST_URL  
     tar xvfz $STACK_DIST_FILENAME
     
     # move to home development dir  
-    mkdir -p $HOME/Development/bin/stack-$STACK_VERSION/bin
-    mv stack $HOME/Development/bin/stack-$STACK_VERSION/bin
-    rm $STACK_DIST_FILENAME  
-    cd $HOME/Development/bin  
+    rm -rf $STACK_INSTALL_DIR/$STACK_TARGET_DIR  
+    mv $STACK_DIST_UNZIPPED_DIR $STACK_INSTALL_DIR/$STACK_TARGET_DIR
+    
+    cd $STACK_INSTALL_DIR  
     
     # sym link
-    rm -ri stack  
-    ln -s `pwd`/stack-$STACK_VERSION stack  
+    rm -rvi stack  
+    ln -s `pwd`/$STACK_TARGET_DIR stack  
 
     # add to PATH environment  
     STACK_HOME=$HOME/Development/bin/stack  
-    PATH=$STACK_HOME/bin:$PATH
+    PATH=$STACK_HOME:$PATH
 
     # clean up
-    cd $HOME/Downloads
+    cd $DOWNLOADS_DIR
     rm -rf stack-$STACK_VERSION*
 
 ### cabal (package manager, old way to manage dependencies)
@@ -99,7 +105,7 @@ for your convinience these instuction is available as:
 #### cabal library
 
     # clone dist  
-    cd $HOME/Downloads  
+    cd $DOWNLOADS_DIR  
     curl -O "https://www.haskell.org/cabal/release/cabal-$CABAL_VERSION/$CABAL_DIST_FILENAME"  
     
     # extract   
@@ -113,13 +119,13 @@ for your convinience these instuction is available as:
     ./Setup install
     
     # Remove temporary files
-    cd $HOME/Downloads
+    cd $DOWNLOADS_DIR
     rm -rfv Cabal-$CABAL_VERSION*
 
 #### cabal-install
 
     # get distributive  
-    cd $HOME/Downloads  
+    cd $DOWNLOADS_DIR  
     curl -O "https://www.haskell.org/cabal/release/cabal-install-$CABAL_INSTALL_VERSION/$CABAL_INSTALL_DIST_FILENAME"  
     
     # extract archive  
@@ -130,7 +136,7 @@ for your convinience these instuction is available as:
     ./bootstrap.sh
     
     # remove temporary files  
-    cd $HOME/Downloads  
+    cd $DOWNLOADS_DIR  
     rm -rfv cabal-install-$CABAL_INSTALL_VERSION*  
     
     # add path to cabal to PATH environment
