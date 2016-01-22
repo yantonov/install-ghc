@@ -4,6 +4,56 @@ for your convinience these instuction is available as:
 [gist](https://gist.github.com/yantonov/10083524)  
 [git repo](https://github.com/yantonov/install-ghc)
 
+# preferered way install stack than install ghc
+
+### settings
+
+    DOWNLOADS_DIR=$HOME/Downloads
+
+    STACK_VERSION="1.0.0"  
+    STACK_ARCHITECTURE="x86_64"  
+    STACK_PLATFORM="osx"  
+    STACK_DIST_FILENAME="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE.tar.gz"  
+    STACK_DIST_UNZIPPED_DIR="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE"
+    STACK_DIST_URL="https://www.stackage.org/stack/osx-x86_64"
+    STACK_INSTALL_DIR="$HOME/Development/bin"
+    STACK_TARGET_DIR="stack-$STACK_VERSION"
+
+### stack (package manager and build tool, preferrered way to manage dependencies)
+
+    cd $DOWNLOADS_DIR
+    
+    curl -L -o $STACK_DIST_FILENAME $STACK_DIST_URL  
+    tar xvfz $STACK_DIST_FILENAME
+    
+    # move to home development dir  
+    rm -rf $STACK_INSTALL_DIR/$STACK_TARGET_DIR  
+    mv $STACK_DIST_UNZIPPED_DIR $STACK_INSTALL_DIR/$STACK_TARGET_DIR
+    
+    cd $STACK_INSTALL_DIR  
+    
+    # sym link
+    rm -rvi stack  
+    ln -s `pwd`/$STACK_TARGET_DIR stack  
+
+    # add to PATH environment  
+    STACK_HOME=$HOME/Development/bin/stack  
+    PATH=$STACK_HOME:$PATH
+
+    # clean up
+    cd $DOWNLOADS_DIR
+    rm -rf stack-$STACK_VERSION*
+
+### install ghc using stack
+
+    # install ghc
+    stack setup
+    # run repl
+    stack ghci
+
+
+# OLD way (manual installation of ghc)
+
 ### settings
     
     DOWNLOADS_DIR="$HOME/Downloads"
@@ -19,15 +69,6 @@ for your convinience these instuction is available as:
 
     CABAL_INSTALL_VERSION="1.22.6.0"
     CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
-
-    STACK_VERSION="1.0.0"  
-    STACK_ARCHITECTURE="x86_64"  
-    STACK_PLATFORM="linux"  
-    STACK_DIST_FILENAME="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE.tar.gz"  
-    STACK_DIST_URL="https://www.stackage.org/stack/linux-x86_64"  
-    STACK_DIST_UNZIPPED_DIR="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE"
-    STACK_INSTALL_DIR="$HOME/Development/bin"  
-    STACK_TARGET_DIR="stack-$STACK_VERSION"  
 
 ### ghc
 
@@ -70,31 +111,6 @@ for your convinience these instuction is available as:
     # remove temporary files  
     cd $DOWNLOADS_DIR  
     rm -rfv ghc-$GHC_VERSION*
-
-### stack (package manager and build tool, preferrered way to manage dependencies)
-
-    cd $DOWNLOADS_DIR
-    
-    curl -L -o $STACK_DIST_FILENAME $STACK_DIST_URL  
-    tar xvfz $STACK_DIST_FILENAME
-    
-    # move to home development dir  
-    rm -rf $STACK_INSTALL_DIR/$STACK_TARGET_DIR  
-    mv $STACK_DIST_UNZIPPED_DIR $STACK_INSTALL_DIR/$STACK_TARGET_DIR
-    
-    cd $STACK_INSTALL_DIR  
-    
-    # sym link
-    rm -rvi stack  
-    ln -s `pwd`/$STACK_TARGET_DIR stack  
-
-    # add to PATH environment  
-    STACK_HOME=$HOME/Development/bin/stack  
-    PATH=$STACK_HOME:$PATH
-
-    # clean up
-    cd $DOWNLOADS_DIR
-    rm -rf stack-$STACK_VERSION*
 
 ### cabal (package manager, old way to manage dependencies)
 
