@@ -1,4 +1,4 @@
-### How to install latest GHC 7.10.3 from source + stack 1.0.0 + cabal 1.22.4.0 + cabal-install 1.22.6.0 on mac os
+###  How to install latest GHC 7.10.3 from source + stack 1.0.2 + cabal 1.22.7.0 + cabal-install 1.22.8.0 on mac os
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/23b15966eb46c45b73e0)  
