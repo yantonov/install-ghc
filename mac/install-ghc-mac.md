@@ -10,7 +10,7 @@ for your convinience these instuction is available as:
 
     DOWNLOADS_DIR=$HOME/Downloads
 
-    STACK_VERSION="1.0.0"  
+    STACK_VERSION="1.0.2"  
     STACK_ARCHITECTURE="x86_64"  
     STACK_PLATFORM="osx"  
     STACK_DIST_FILENAME="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE.tar.gz"  
@@ -64,10 +64,10 @@ for your convinience these instuction is available as:
     GHC_DIST_FILENAME="ghc-$GHC_VERSION-$ARCHITECTURE-$PLATFORM.tar.bz2"
     GHC_DIST_FILE="https://downloads.haskell.org/~ghc/$GHC_VERSION/$GHC_DIST_FILENAME"
     
-    CABAL_VERSION="1.22.4.0"  
+    CABAL_VERSION="1.22.7.0"  
     CABAL_DIST_FILENAME="Cabal-$CABAL_VERSION.tar.gz"  
 
-    CABAL_INSTALL_VERSION="1.22.6.0"  
+    CABAL_INSTALL_VERSION="1.22.8.0"  
     CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
 
 ### ghc
@@ -108,7 +108,7 @@ for your convinience these instuction is available as:
 
     # remove temporary files  
     cd $DOWNLOADS_DIR
-    rm -rfv ghc-$GHC_VERSION*
+    rm -rfv ghc-$GHC_VERSION*    
 
 ### cabal (package manager, old way to manage dependencies)
 
@@ -127,21 +127,20 @@ for your convinience these instuction is available as:
     cd Cabal-$CABAL_VERSION  
     
     # build
-    ghc --make Setup.hs
-    ./Setup configure --user
-    ./Setup build
-    ./Setup install
+    ghc --make Setup.hs  
+    ./Setup configure --user  
+    ./Setup build  
+    ./Setup install  
     
-    # Remove temporary files
-    cd $DOWNLOADS_DIR
-    rm -rfv Cabal-$CABAL_VERSION*
-
+    # Remove temporary files  
+    cd $DOWNLOADS_DIR  
+    rm -rfv Cabal-$CABAL_VERSION*  
 
 #### cabal-install
 
     # get distributive  
     cd $DOWNLOADS_DIR  
-    curl -O "https://www.haskell.org/cabal/release/cabal-install-$CABAL_INSTALL_VERSION/$CABAL_INSTALL_DIST_FILENAME"  
+    curl -L -O "https://www.haskell.org/cabal/release/cabal-install-$CABAL_INSTALL_VERSION/$CABAL_INSTALL_DIST_FILENAME"  
     
     # extract archive  
     tar xzvf $CABAL_INSTALL_DIST_FILENAME  
