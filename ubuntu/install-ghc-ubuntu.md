@@ -4,7 +4,7 @@ for your convinience these instuction is available as:
 [gist](https://gist.github.com/yantonov/10083524)  
 [git repo](https://github.com/yantonov/install-ghc)
 
-# preferered way install stack than install ghc
+# preferred way install stack than install ghc
 
 ### settings
 
