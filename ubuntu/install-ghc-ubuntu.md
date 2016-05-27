@@ -1,4 +1,4 @@
-### How to install latest GHC 7.10.3 from source  + stack 1.0.4 + cabal 1.22.8.0 + cabal-install 1.22.9.0 on ubuntu
+### How to install latest GHC 8.0.1 from source  + stack 1.1.2 + cabal 1.24.0.0 + cabal-install 1.24.0.0 on ubuntu
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/10083524)  
@@ -10,12 +10,12 @@ for your convinience these instuction is available as:
 
     DOWNLOADS_DIR=$HOME/Downloads
 
-    STACK_VERSION="1.0.4"  
+    STACK_VERSION="1.1.2"  
     STACK_ARCHITECTURE="x86_64"  
-    STACK_PLATFORM="osx"  
+    STACK_PLATFORM="linux"  
     STACK_DIST_FILENAME="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE.tar.gz"  
     STACK_DIST_UNZIPPED_DIR="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE"
-    STACK_DIST_URL="https://www.stackage.org/stack/osx-x86_64"
+    STACK_DIST_URL="https://www.stackage.org/stack/$STACK_PLATFORM-$STACK_ARCHITECTURE"
     STACK_INSTALL_DIR="$HOME/Development/bin"
     STACK_TARGET_DIR="stack-$STACK_VERSION"
 
@@ -25,6 +25,15 @@ for your convinience these instuction is available as:
     
     curl -L -o $STACK_DIST_FILENAME $STACK_DIST_URL  
     tar xvfz $STACK_DIST_FILENAME
+    
+    # in case if error like this: 
+    #curl: (77) error setting certificate verify locations: CAfile: 
+    # /etc/pki/tls/certs/ca-bundle.crt CApath: 
+    # ...
+    # create ~/.curlrc file
+    # and put this lines to it
+    # capath=/etc/ssl/certs/
+    # cacert=/etc/ssl/certs/ca-certificates.crt
     
     # move to home development dir  
     rm -rf $STACK_INSTALL_DIR/$STACK_TARGET_DIR  
@@ -58,16 +67,16 @@ for your convinience these instuction is available as:
     
     DOWNLOADS_DIR="$HOME/Downloads"
 
-    GHC_VERSION="7.10.3"  
+    GHC_VERSION="8.0.1"  
     ARCHITECTURE="x86_64"  
     # for 32 bit ARCHITECTURE="i386"      
     PLATFORM="deb8-linux"  
-    GHC_DIST_FILENAME="ghc-$GHC_VERSION-$ARCHITECTURE-$PLATFORM.tar.bz2"
+    GHC_DIST_FILENAME="ghc-$GHC_VERSION-$ARCHITECTURE-$PLATFORM.tar.xz"
     
-    CABAL_VERSION="1.22.8.0"
+    CABAL_VERSION="1.24.0.0"
     CABAL_DIST_FILENAME="Cabal-$CABAL_VERSION.tar.gz"
 
-    CABAL_INSTALL_VERSION="1.22.9.0"
+    CABAL_INSTALL_VERSION="1.24.0.0"
     CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
 
 ### ghc
@@ -84,7 +93,7 @@ for your convinience these instuction is available as:
     cd $DOWNLOADS_DIR
     GHC_DIST_URL="https://www.haskell.org/ghc/dist/$GHC_VERSION/$GHC_DIST_FILENAME"
     curl -L -O $GHC_DIST_URL  
-    tar xvfj $GHC_DIST_FILENAME  
+    tar xvfJ $GHC_DIST_FILENAME  
     cd ghc-$GHC_VERSION  
 
     # install to  
