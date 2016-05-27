@@ -15,7 +15,7 @@ for your convinience these instuction is available as:
     STACK_PLATFORM="osx"  
     STACK_DIST_FILENAME="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE.tar.gz"  
     STACK_DIST_UNZIPPED_DIR="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE"
-    STACK_DIST_URL="https://www.stackage.org/stack/osx-x86_64"
+    STACK_DIST_URL="https://www.stackage.org/stack/$STACK_PLATFORM-STACK_ARCHITECTURE"
     STACK_INSTALL_DIR="$HOME/Development/bin"
     STACK_TARGET_DIR="stack-$STACK_VERSION"
 
