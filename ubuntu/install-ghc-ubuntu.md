@@ -139,7 +139,7 @@ for your convinience these instuction is available as:
     
     # build
     ghc --make Setup.hs
-    ./Setup configure --user
+    ./Setup configure --user --enable-library-profiling
     ./Setup build
     ./Setup install
     
