@@ -1,4 +1,4 @@
-###  How to install latest GHC 8.0.1 from source + stack 1.1.2 + cabal 1.24.0.0 + cabal-install 1.24.0.0 on mac os
+###  How to install latest GHC 8.0.1 from source + stack 1.2.0 + cabal 1.24.0.0 + cabal-install 1.24.0.0 on mac os
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/23b15966eb46c45b73e0)  
@@ -10,12 +10,12 @@ for your convinience these instuction is available as:
 
     DOWNLOADS_DIR=$HOME/Downloads
 
-    STACK_VERSION="1.1.2"  
+    STACK_VERSION="1.2.0"  
     STACK_ARCHITECTURE="x86_64"  
     STACK_PLATFORM="osx"  
     STACK_DIST_FILENAME="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE.tar.gz"  
     STACK_DIST_UNZIPPED_DIR="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE"
-    STACK_DIST_URL="https://www.stackage.org/stack/$STACK_PLATFORM-STACK_ARCHITECTURE"
+    STACK_DIST_URL="https://www.stackage.org/stack/$STACK_PLATFORM-$STACK_ARCHITECTURE"
     STACK_INSTALL_DIR="$HOME/Development/bin"
     STACK_TARGET_DIR="stack-$STACK_VERSION"
 
@@ -25,7 +25,7 @@ for your convinience these instuction is available as:
     cd $DOWNLOADS_DIR
     
     curl -L -o $STACK_DIST_FILENAME $STACK_DIST_URL  
-    tar xvfz $STACK_DIST_FILENAME  
+    tar xvf $STACK_DIST_FILENAME  
     
     # move to home development dir
     rm -rf $STACK_INSTALL_DIR/$STACK_TARGET_DIR  
