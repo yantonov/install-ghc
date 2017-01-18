@@ -1,4 +1,4 @@
-### How to install latest GHC 8.0.1 from source  + stack 1.2.0 + cabal 1.24.0.0 + cabal-install 1.24.0.0 on ubuntu
+### How to install latest GHC 8.0.2 from source  + stack 1.3.2 + cabal 1.24.2.0 + cabal-install 1.24.0.2 on ubuntu
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/10083524)  
@@ -10,7 +10,7 @@ for your convinience these instuction is available as:
 
     DOWNLOADS_DIR=$HOME/Downloads
 
-    STACK_VERSION="1.2.0"  
+    STACK_VERSION="1.3.2"  
     STACK_ARCHITECTURE="x86_64"  
     STACK_PLATFORM="linux"  
     STACK_DIST_FILENAME="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE.tar.gz"  
@@ -67,16 +67,16 @@ for your convinience these instuction is available as:
     
     DOWNLOADS_DIR="$HOME/Downloads"
 
-    GHC_VERSION="8.0.1"  
+    GHC_VERSION="8.0.2"  
     ARCHITECTURE="x86_64"  
     # for 32 bit ARCHITECTURE="i386"      
     PLATFORM="deb8-linux"  
     GHC_DIST_FILENAME="ghc-$GHC_VERSION-$ARCHITECTURE-$PLATFORM.tar.xz"
     
-    CABAL_VERSION="1.24.0.0"
+    CABAL_VERSION="1.24.2.0"
     CABAL_DIST_FILENAME="Cabal-$CABAL_VERSION.tar.gz"
 
-    CABAL_INSTALL_VERSION="1.24.0.0"
+    CABAL_INSTALL_VERSION="1.24.0.2"
     CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
 
 ### ghc
