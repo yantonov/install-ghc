@@ -37,6 +37,7 @@ for your convinience these instuction is available as:
     
     # move to home development dir  
     rm -rf $STACK_INSTALL_DIR/$STACK_TARGET_DIR  
+    mkdir -p $STACK_INSTALL_DIR
     mv $STACK_DIST_UNZIPPED_DIR $STACK_INSTALL_DIR/$STACK_TARGET_DIR
     
     cd $STACK_INSTALL_DIR  
