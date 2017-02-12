@@ -1,4 +1,4 @@
-###  How to install latest GHC 8.0.1 from source + latest stack + cabal 1.24.0.0 + cabal-install 1.24.0.0 on mac os
+###  How to install latest GHC from source + latest stack + cabal 1.24.0.0 + cabal-install 1.24.0.0 on mac os
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/23b15966eb46c45b73e0)  
@@ -58,9 +58,10 @@ for your convinience these instuction is available as:
 
     DOWNLOADS_DIR=$HOME/Downloads
 
-    GHC_VERSION="8.0.1"  
     ARCHITECTURE="x86_64"  
     PLATFORM="apple-darwin"  
+    GHC_VERSION=`curl https://downloads.haskell.org/~ghc/ | grep -E '([.0-9]+)/' | sed -E 's/.*>([.0-9]+).*/\1/' | uniq | sort -r | head -n 1`
+
     GHC_DIST_FILENAME="ghc-$GHC_VERSION-$ARCHITECTURE-$PLATFORM.tar.xz"
     GHC_DIST_FILE="https://downloads.haskell.org/~ghc/$GHC_VERSION/$GHC_DIST_FILENAME"
     

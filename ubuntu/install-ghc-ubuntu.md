@@ -1,4 +1,4 @@
-### How to install latest GHC 8.0.2 from source + latest stack + cabal 1.24.2.0 + cabal-install 1.24.0.2 on ubuntu
+### How to install latest GHC from source + latest stack + cabal 1.24.2.0 + cabal-install 1.24.0.2 on ubuntu
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/10083524)  
@@ -66,7 +66,7 @@ for your convinience these instuction is available as:
     
     DOWNLOADS_DIR="$HOME/Downloads"
 
-    GHC_VERSION="8.0.2"  
+    GHC_VERSION=`curl https://downloads.haskell.org/~ghc/ | grep -E '([.0-9]+)/' | sed -E 's/.*>([.0-9]+).*/\1/' | uniq | sort -r | head -n 1`
     ARCHITECTURE="x86_64"  
     # for 32 bit ARCHITECTURE="i386"      
     PLATFORM="deb8-linux"  
