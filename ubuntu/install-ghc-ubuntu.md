@@ -1,4 +1,4 @@
-### How to install latest GHC 8.0.2 from source  + stack 1.3.2 + cabal 1.24.2.0 + cabal-install 1.24.0.2 on ubuntu
+### How to install latest GHC 8.0.2 from source + latest stack + cabal 1.24.2.0 + cabal-install 1.24.0.2 on ubuntu
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/10083524)  
@@ -10,21 +10,16 @@ for your convinience these instuction is available as:
 
     DOWNLOADS_DIR=$HOME/Downloads
 
-    STACK_VERSION="1.3.2"  
     STACK_ARCHITECTURE="x86_64"  
     STACK_PLATFORM="linux"  
-    STACK_DIST_FILENAME="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE.tar.gz"  
-    STACK_DIST_UNZIPPED_DIR="stack-$STACK_VERSION-$STACK_PLATFORM-$STACK_ARCHITECTURE"
     STACK_DIST_URL="https://www.stackage.org/stack/$STACK_PLATFORM-$STACK_ARCHITECTURE"
     STACK_INSTALL_DIR="$HOME/Development/bin"
-    STACK_TARGET_DIR="stack-$STACK_VERSION"
 
 ### stack (package manager and build tool, preferrered way to manage dependencies)
 
     cd $DOWNLOADS_DIR
     
-    curl -L -o $STACK_DIST_FILENAME $STACK_DIST_URL  
-    tar xvfz $STACK_DIST_FILENAME
+    curl -L -O $STACK_DIST_URL  
     
     # in case if error like this: 
     #curl: (77) error setting certificate verify locations: CAfile: 
@@ -35,12 +30,17 @@ for your convinience these instuction is available as:
     # capath=/etc/ssl/certs/
     # cacert=/etc/ssl/certs/ca-certificates.crt
     
-    # move to home development dir  
+    STACK_DIST_FILENAME=`ls -1 | grep 'stack-.*\.tar\.gz'`
+    STACK_VERSION=`echo $STACK_DIST_FILENAME | sed -E 's/stack-([.0-9]+)-.*/\1/'`
+    STACK_TARGET_DIR="stack-$STACK_VERSION"
+
+    tar xvf $STACK_DIST_FILENAME  
+    STACK_DIST_UNZIPPED_DIR=`ls -d -1 stack-*/`
+    
+    # move to home development dir
     rm -rf $STACK_INSTALL_DIR/$STACK_TARGET_DIR  
     mkdir -p $STACK_INSTALL_DIR
     mv $STACK_DIST_UNZIPPED_DIR $STACK_INSTALL_DIR/$STACK_TARGET_DIR
-    
-    cd $STACK_INSTALL_DIR  
     
     # sym link
     rm -rvi stack  
