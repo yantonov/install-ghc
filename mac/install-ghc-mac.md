@@ -1,4 +1,4 @@
-###  How to install latest GHC from source + latest stack + cabal 1.24.0.0 + cabal-install 1.24.0.0 on mac os
+###  How to install latest GHC from source + latest stack + cabal + cabal-install on mac os
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/23b15966eb46c45b73e0)  
@@ -54,9 +54,14 @@ for your convinience these instuction is available as:
 
 # OLD way (manual installation of ghc)
 
-### settings
+####  mac prerequisites
+    
+    # install xcode command line tools from here:  
+    # [xcode command line tools site](https://developer.apple.com/downloads)
 
-    DOWNLOADS_DIR=$HOME/Downloads
+### ghc
+
+    DOWNLOADS_DIR=$HOME/Downloads  
 
     ARCHITECTURE="x86_64"  
     PLATFORM="apple-darwin"  
@@ -64,18 +69,8 @@ for your convinience these instuction is available as:
 
     GHC_DIST_FILENAME="ghc-$GHC_VERSION-$ARCHITECTURE-$PLATFORM.tar.xz"
     GHC_DIST_FILE="https://downloads.haskell.org/~ghc/$GHC_VERSION/$GHC_DIST_FILENAME"
-    
-    CABAL_VERSION="1.24.0.0"  
-    CABAL_DIST_FILENAME="Cabal-$CABAL_VERSION.tar.gz"  
 
-    CABAL_INSTALL_VERSION="1.24.0.0"  
-    CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
-
-### ghc
-
-    # install xcode command line tools from here:  
-    # [xcode command line tools site](https://developer.apple.com/downloads)
-
+    ### ghc installation
     # go to Downloads  
     cd $DOWNLOADS_DIR
 
@@ -119,6 +114,9 @@ for your convinience these instuction is available as:
 
 #### cabal library
 
+    CABAL_VERSION=`curl https://www.haskell.org/cabal/release/cabal-latest/ | grep -E 'Cabal-([.0-9]+\.[0-9]).*' | sed -E 's/.*>Cabal-([.0-9]+\.[0-9]).*/\1/' | head -n 1`
+    CABAL_DIST_FILENAME="Cabal-$CABAL_VERSION.tar.gz"  
+
     # clone dist  
     cd $DOWNLOADS_DIR  
     curl -O "https://www.haskell.org/cabal/release/cabal-$CABAL_VERSION/$CABAL_DIST_FILENAME"  
@@ -138,6 +136,9 @@ for your convinience these instuction is available as:
     rm -rfv Cabal-$CABAL_VERSION*  
 
 #### cabal-install
+
+    CABAL_INSTALL_VERSION=`curl https://www.haskell.org/cabal/release/cabal-install-latest/ | grep -E 'cabal-install-([.0-9]+\.[0-9]).*' | sed -E 's/.*>cabal-install-([.0-9]+\.[0-9]).*/\1/' | head -n 1`  
+    CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
 
     # get distributive  
     cd $DOWNLOADS_DIR  

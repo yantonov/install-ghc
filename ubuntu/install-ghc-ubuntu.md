@@ -1,4 +1,4 @@
-### How to install latest GHC from source + latest stack + cabal 1.24.2.0 + cabal-install 1.24.0.2 on ubuntu
+### How to install latest GHC from source + latest stack + cabal + cabal-install on ubuntu
 
 for your convinience these instuction is available as:  
 [gist](https://gist.github.com/yantonov/10083524)  
@@ -62,31 +62,23 @@ for your convinience these instuction is available as:
 
 # OLD way (manual installation of ghc)
 
-### settings
-    
-    DOWNLOADS_DIR="$HOME/Downloads"
-
-    GHC_VERSION=`curl https://downloads.haskell.org/~ghc/ | grep -E '([.0-9]+)/' | sed -E 's/.*>([.0-9]+).*/\1/' | uniq | sort -r | head -n 1`
-    ARCHITECTURE="x86_64"  
-    # for 32 bit ARCHITECTURE="i386"      
-    PLATFORM="deb8-linux"  
-    GHC_DIST_FILENAME="ghc-$GHC_VERSION-$ARCHITECTURE-$PLATFORM.tar.xz"
-    
-    CABAL_VERSION="1.24.2.0"
-    CABAL_DIST_FILENAME="Cabal-$CABAL_VERSION.tar.gz"
-
-    CABAL_INSTALL_VERSION="1.24.0.2"
-    CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
-
-### ghc
-
-### ubuntu prerequisites
+    ### ubuntu prerequisites
 
     # Multiprecision arithmetic library developers tools, zlib  
     sudo apt-get install libgmp-dev zlib1g-dev -y  
     sudo -K
-
-### ghc installation
+    
+### ghc  
+    
+    DOWNLOADS_DIR="$HOME/Downloads"
+    
+    GHC_VERSION=`curl https://downloads.haskell.org/~ghc/ | grep -E '([.0-9]+)/' | sed -E 's/.*>([.0-9]+).*/\1/' | uniq | sort -r | head -n 1`
+    ARCHITECTURE="x86_64"  
+    # for 32 bit ARCHITECTURE="i386"  
+    PLATFORM="deb8-linux"  
+    GHC_DIST_FILENAME="ghc-$GHC_VERSION-$ARCHITECTURE-$PLATFORM.tar.xz"
+    
+    ### ghc installation
 
     # get distr  
     cd $DOWNLOADS_DIR
@@ -128,6 +120,9 @@ for your convinience these instuction is available as:
 
 #### cabal library
 
+    CABAL_VERSION=`curl https://www.haskell.org/cabal/release/cabal-latest/ | grep -E 'Cabal-([.0-9]+\.[0-9]).*' | sed -E 's/.*>Cabal-([.0-9]+\.[0-9]).*/\1/' | head -n 1`
+    CABAL_DIST_FILENAME="Cabal-$CABAL_VERSION.tar.gz"
+
     # clone dist  
     cd $DOWNLOADS_DIR  
     curl -O "https://www.haskell.org/cabal/release/cabal-$CABAL_VERSION/$CABAL_DIST_FILENAME"  
@@ -147,6 +142,9 @@ for your convinience these instuction is available as:
     rm -rfv Cabal-$CABAL_VERSION*
 
 #### cabal-install
+
+    CABAL_INSTALL_VERSION=`curl https://www.haskell.org/cabal/release/cabal-install-latest/ | grep -E 'cabal-install-([.0-9]+\.[0-9]).*' | sed -E 's/.*>cabal-install-([.0-9]+\.[0-9]).*/\1/' | head -n 1`  
+    CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
 
     # get distributive  
     cd $DOWNLOADS_DIR  
