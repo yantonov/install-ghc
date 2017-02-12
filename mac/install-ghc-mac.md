@@ -6,16 +6,15 @@ for your convinience these instuction is available as:
     
 # Prefererred way install stack then install ghc using stack    
 
-### settings
+### stack (package manager and build tool, preferrered way to manage dependencies)
 
+    # settings
     DOWNLOADS_DIR=$HOME/Downloads
 
     STACK_ARCHITECTURE="x86_64"  
     STACK_PLATFORM="osx"  
     STACK_DIST_URL="https://www.stackage.org/stack/$STACK_PLATFORM-$STACK_ARCHITECTURE"
     STACK_INSTALL_DIR="$HOME/Development/bin"
-
-### stack (package manager and build tool, preferrered way to manage dependencies)
 
     cd $DOWNLOADS_DIR
     
