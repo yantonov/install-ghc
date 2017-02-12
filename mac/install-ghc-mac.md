@@ -19,9 +19,10 @@ for your convinience these instuction is available as:
     cd $DOWNLOADS_DIR
     
     curl -L -O $STACK_DIST_URL  
-    STACK_DIST_FILENAME=`ls -1 | grep 'stack-.*\.tar\.gz'`
-    STACK_VERSION=`echo $STACK_DIST_FILENAME | sed -E 's/stack-([.0-9]+)-.*/\1/'`
-    STACK_TARGET_DIR="stack-$STACK_VERSION"
+    STACK_DIST_FILENAME=`ls -1 | grep 'stack-.*\.tar\.gz'`  
+    STACK_VERSION=`echo $STACK_DIST_FILENAME | sed -E 's/stack-([.0-9]+)-.*/\1/'`  
+    STACK_TARGET_DIR="stack-$STACK_VERSION"  
+    echo "stack $STACK_VERSION will be installed"  
 
     tar xvf $STACK_DIST_FILENAME  
     STACK_DIST_UNZIPPED_DIR=`ls -d -1 stack-*/`
@@ -71,6 +72,9 @@ for your convinience these instuction is available as:
     GHC_DIST_FILE="https://downloads.haskell.org/~ghc/$GHC_VERSION/$GHC_DIST_FILENAME"
 
     ### ghc installation
+    
+    echo "GHC $GHC_VERSION will be installed"  
+    
     # go to Downloads  
     cd $DOWNLOADS_DIR
 
@@ -114,8 +118,10 @@ for your convinience these instuction is available as:
 
 #### cabal library
 
-    CABAL_VERSION=`curl https://www.haskell.org/cabal/release/cabal-latest/ | grep -E 'Cabal-([.0-9]+\.[0-9]).*' | sed -E 's/.*>Cabal-([.0-9]+\.[0-9]).*/\1/' | head -n 1`
+    CABAL_VERSION=`curl https://www.haskell.org/cabal/release/cabal-latest/ | grep -E 'Cabal-([.0-9]+\.[0-9]).*' | sed -E 's/.*>Cabal-([.0-9]+\.[0-9]).*/\1/' | head -n 1`    
     CABAL_DIST_FILENAME="Cabal-$CABAL_VERSION.tar.gz"  
+    
+    echo "Cabal $CABAL_VERSION will be installed..."  
 
     # clone dist  
     cd $DOWNLOADS_DIR  
@@ -137,8 +143,10 @@ for your convinience these instuction is available as:
 
 #### cabal-install
 
-    CABAL_INSTALL_VERSION=`curl https://www.haskell.org/cabal/release/cabal-install-latest/ | grep -E 'cabal-install-([.0-9]+\.[0-9]).*' | sed -E 's/.*>cabal-install-([.0-9]+\.[0-9]).*/\1/' | head -n 1`  
-    CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"
+    CABAL_INSTALL_VERSION=`curl https://www.haskell.org/cabal/release/cabal-install-latest/ | grep -E 'cabal-install-([.0-9]+\.[0-9]).*' | sed -E 's/.*>cabal-install-([.0-9]+\.[0-9]).*/\1/' | head -n 1`      
+    CABAL_INSTALL_DIST_FILENAME="cabal-install-$CABAL_INSTALL_VERSION.tar.gz"  
+    
+    echo "cabal install $CABAL_INSTALL_VERSION will be installed..."  
 
     # get distributive  
     cd $DOWNLOADS_DIR  
