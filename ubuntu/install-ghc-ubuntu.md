@@ -1,6 +1,6 @@
-### How to install latest GHC from source + latest stack + cabal + cabal-install on ubuntu
+### How to install GHC from source + latest stack + cabal + cabal-install on ubuntu
 
-for your convinience these instuction is available as:  
+for your convinience this instuction is available as:  
 [gist](https://gist.github.com/yantonov/10083524)  
 [git repo](https://github.com/yantonov/install-ghc)
 

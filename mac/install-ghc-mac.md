@@ -1,6 +1,6 @@
-###  How to install latest GHC from source + latest stack + cabal + cabal-install on mac os
+###  How to install GHC from source + latest stack + cabal + cabal-install on mac os
 
-for your convinience these instuction is available as:  
+for your convinience this instuction is available as:  
 [gist](https://gist.github.com/yantonov/23b15966eb46c45b73e0)  
 [git repo](https://github.com/yantonov/install-ghc)  
     
